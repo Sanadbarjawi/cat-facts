@@ -26,6 +26,10 @@ final class FactsListViewController: BaseMVPController<FactsListPresenter, FactL
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.addPulltoRefreshControl(
+            controller: self,
+            doing: #selector(pullToRefresh),
+            with: .init(string: "loading our awesome facts..."), tintColor: nil)
         return tableView
     }()
     
@@ -57,6 +61,10 @@ final class FactsListViewController: BaseMVPController<FactsListPresenter, FactL
         presenter?.attachView(self)
         presenter?.fetchCatFacts()
     }
+    
+    @objc func pullToRefresh() {
+        presenter?.fetchCatFacts()
+    }
 }
 
 extension FactsListViewController: UISearchBarDelegate {
@@ -83,7 +91,7 @@ extension FactsListViewController: FactListViewable {
     }
     
     func stopLoading() {
-        
+        factsTableView.endRefreshing()
     }
     
     func didSucceed() {
