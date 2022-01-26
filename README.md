@@ -7,13 +7,14 @@ a fun iOS application that can display a list of facts about cats
 * A scrollable list of facts about cats 😻
 * A verified checkbox if the fact is legit! ✅
 * A "new" icon displayed if the fact has been created in the last 90 days 🙌🏼
-* a simple search box that allows user to find a fact by typing in a specific keyword 🔍
+* A simple search box that allows user to find a fact by typing in a specific keyword 🔍
+* Pull-to-refresh functionality to refresh the results list 🌪
 
 ## Project Technicals
 
-- [x] Unit Testing
 - [x] MVP Archeticture; easily mockable for tests.
-- [x] Dependency injection 
+- [x] Unit Testing 🧪
+- [x] Dependency injection 💉
 
 
 ## Getting Started
