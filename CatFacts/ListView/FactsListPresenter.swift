@@ -7,24 +7,35 @@
 
 import Foundation
 
-protocol FactListViewable: Viewable {
+public protocol FactListViewable: Viewable {
     func reloadData()
 }
 
-final class FactsListPresenter: Presentable {
+public protocol FactsListPresenterProtocol: Presentable {
+    var catFactsFullList: [CatFact] {get}
+    var catFactsFilteredList: [CatFact] {get}
+    var isSearching: Bool {get}
+    
+    func search(for text: String)
+    func fetchCatFacts()
+    func setCatFacts(facts catFacts: [CatFact])
+    func getCatFacts() -> [CatFact]
+}
+
+final class FactsListPresenter: FactsListPresenterProtocol {
     
     typealias View = FactListViewable
     weak var view: FactListViewable?
     
-    private let service: FactsApi
-    private var catFactsList: [CatFact] = []
-    private var filteredList: [CatFact] = []
+    private let service: ListServices
+    private(set) var catFactsFullList: [CatFact] = []
+    private(set) var catFactsFilteredList: [CatFact] = []
 
-    private var isSearching = false
+    private(set) var isSearching = false
     
     /// intisialising using the service, DI
     /// - Parameter FactsApi: service to call the API
-    init(service factsService: FactsApi) {
+    init(service factsService: ListServices) {
         self.service = factsService
     }
     
@@ -43,13 +54,12 @@ final class FactsListPresenter: Presentable {
             isSearching = false
         } else {
             isSearching = true
-            filteredList = catFactsList.filter({$0.text.contains(text)})
+            catFactsFilteredList = catFactsFullList.filter({$0.text.contains(text)})
         }
         view?.reloadData()
     }
     
     /// fetching cat facts from API
-    @objc
     func fetchCatFacts() {
         service.getFacts { [weak self] list, error in
             self?.view?.stopLoading()
@@ -57,13 +67,17 @@ final class FactsListPresenter: Presentable {
                 self?.view?.didFail(with: error ?? NSError(domain: "Fetching Facts", code: -1, userInfo: ["message":"general error"]))
                 return
             }
-            self?.catFactsList = list ?? []
+            self?.setCatFacts(facts: list ?? [])
             self?.view?.didSucceed()
         }
     }
     
+    func setCatFacts(facts catFacts: [CatFact]) {
+        self.catFactsFullList = catFacts
+    }
+    
     func getCatFacts() -> [CatFact] {
-        return isSearching ? filteredList : catFactsList
+        return isSearching ? catFactsFilteredList : catFactsFullList
     }
     
 }

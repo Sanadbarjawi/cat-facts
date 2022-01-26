@@ -25,6 +25,9 @@
 		C968333827A191B10070FE8F /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968333727A191B10070FE8F /* DateHelper.swift */; };
 		C968333A27A1AC0B0070FE8F /* UITextField+DoneAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968333927A1AC0B0070FE8F /* UITextField+DoneAccessory.swift */; };
 		C968333C27A1B7B10070FE8F /* UIScrollView+PullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968333B27A1B7B10070FE8F /* UIScrollView+PullToRefresh.swift */; };
+		C968334127A1C5A20070FE8F /* DateHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968334027A1C5A20070FE8F /* DateHelperTests.swift */; };
+		C968334327A1C6260070FE8F /* CatFactsTestsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968334227A1C6260070FE8F /* CatFactsTestsAPI.swift */; };
+		C968334527A1CDCA0070FE8F /* CatFactsSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968334427A1CDCA0070FE8F /* CatFactsSearchTests.swift */; };
 		E43AD9115AFF4B8FD48140A6 /* Pods_CatFacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E4E467BA69CCD125797C98 /* Pods_CatFacts.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,9 @@
 		C968333727A191B10070FE8F /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		C968333927A1AC0B0070FE8F /* UITextField+DoneAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+DoneAccessory.swift"; sourceTree = "<group>"; };
 		C968333B27A1B7B10070FE8F /* UIScrollView+PullToRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+PullToRefresh.swift"; sourceTree = "<group>"; };
+		C968334027A1C5A20070FE8F /* DateHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelperTests.swift; sourceTree = "<group>"; };
+		C968334227A1C6260070FE8F /* CatFactsTestsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactsTestsAPI.swift; sourceTree = "<group>"; };
+		C968334427A1CDCA0070FE8F /* CatFactsSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactsSearchTests.swift; sourceTree = "<group>"; };
 		E0E4E467BA69CCD125797C98 /* Pods_CatFacts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CatFacts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -152,7 +158,10 @@
 		88CFD41726136D3B0090B26A /* CatFactsTests */ = {
 			isa = PBXGroup;
 			children = (
+				C968334227A1C6260070FE8F /* CatFactsTestsAPI.swift */,
 				88CFD41826136D3B0090B26A /* CatFactsTests.swift */,
+				C968334427A1CDCA0070FE8F /* CatFactsSearchTests.swift */,
+				C968334027A1C5A20070FE8F /* DateHelperTests.swift */,
 				88CFD41A26136D3B0090B26A /* Info.plist */,
 			);
 			path = CatFactsTests;
@@ -417,6 +426,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				88CFD41926136D3B0090B26A /* CatFactsTests.swift in Sources */,
+				C968334127A1C5A20070FE8F /* DateHelperTests.swift in Sources */,
+				C968334527A1CDCA0070FE8F /* CatFactsSearchTests.swift in Sources */,
+				C968334327A1C6260070FE8F /* CatFactsTestsAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

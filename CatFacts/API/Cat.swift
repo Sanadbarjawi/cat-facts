@@ -7,13 +7,20 @@
 
 import Foundation
 
-struct CatFact: Decodable {
+public struct CatFact: Decodable {
+    
+    internal init(status: Status, text: String, createdAt: Date) {
+        self.status = status
+        self.text = text
+        self.createdAt = createdAt
+    }
+    
     var status: Status
     let text: String
     let createdAt: Date
     
     //doing our own implementation here to assign `isNew` variable while initialization the Fact object
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         status = try values.decode(Status.self, forKey: .status)
         text = try values.decode(String.self, forKey: .text)

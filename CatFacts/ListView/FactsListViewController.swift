@@ -34,7 +34,7 @@ final class FactsListViewController: BaseMVPController<FactsListPresenter, FactL
     }()
     
     override func createPresenter() -> FactsListPresenter? {
-        return FactsListPresenter(service: FactsApi())
+        return FactsListPresenter(service: ListServices())
     }
     
     private func configureSearchBar() {
