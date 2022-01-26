@@ -31,15 +31,11 @@ class CatFactsPresenterTests: XCTestCase {
          26th of Jan 2022 == 1643155200
          will check the span between the two if less than 90 days, if it returns true then success else fails
          **/
-        let span = DateHelper.isSpanIsLessThan90Days(timeInterval: 1642464000,
-                                    currentDate: Date(timeIntervalSince1970: 1643155200))
-        if span {
+        let span = DateHelper.isSpanIsLessThan90Days(
+            fromDate: Date(timeIntervalSince1970:1642464000),
+            toDate: Date(timeIntervalSince1970: 1643155200))
             XCTAssert(span, "less than 90 days :)")
-        } else {
-            XCTAssert(span, "greater than 90 days :(")
-        }
     }
-    
 
 }
 

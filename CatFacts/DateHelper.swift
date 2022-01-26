@@ -12,12 +12,11 @@ public struct DateHelper {
     /// checks whether the given timeInterval is less than 90days or past it.
     /// - Parameter timeInterval: timeInterval
     /// - Returns: true if less, false if past the 90 days
-    public static func isSpanIsLessThan90Days(timeInterval: TimeInterval,
-                                        currentDate: Date) -> Bool {
+    public static func isSpanIsLessThan90Days(fromDate: Date,
+                                              toDate: Date) -> Bool {
         let calendar = Calendar.current
-        let date = Date(timeIntervalSince1970: timeInterval)
-        let startOfNow = calendar.startOfDay(for: currentDate)
-        let startOfTimeStamp = calendar.startOfDay(for: date)
+        let startOfNow = calendar.startOfDay(for: toDate)
+        let startOfTimeStamp = calendar.startOfDay(for: fromDate)
         let components = calendar.dateComponents([.day], from: startOfNow, to: startOfTimeStamp)
         let day = components.day!
         return abs(day) <= 90
