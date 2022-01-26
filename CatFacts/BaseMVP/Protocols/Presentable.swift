@@ -9,8 +9,7 @@ import Foundation
 
 public protocol Presentable {
     associatedtype View
-    var view: View? {get}
-    func getView() -> View?
+    var view: View? {get set}
     func attachView(_ view: View)
     func detachView()
 }

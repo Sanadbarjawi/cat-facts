@@ -11,12 +11,12 @@ public protocol Viewable: NSObjectProtocol {
     func didSucceed()
     func startLoading()
     func stopLoading()
-    func didFail(with error: NSError)
+    func didFail(with error: Error)
 }
 
 extension Viewable {
     func didSucceed() { }
     func startLoading() { }
     func stopLoading() { }
-    func didFail(with error: NSError) { }
+    func didFail(with error: Error) { }
 }
