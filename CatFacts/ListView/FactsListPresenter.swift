@@ -51,9 +51,14 @@ final class FactsListPresenter: Presentable {
         return catFactsList ?? []
     }
     
-    /**
-     Display an checkbox icon if the API returns the value of `verified` as true
-     Display a "new" icon if the fact has been created in the last 90 days
-     */
+    private func checkIfFactIsNew(from interval : TimeInterval) -> Bool {
+        let calendar = Calendar.current
+        let date = Date(timeIntervalSince1970: interval)
+        let startOfNow = calendar.startOfDay(for: Date())
+        let startOfTimeStamp = calendar.startOfDay(for: date)
+        let components = calendar.dateComponents([.day], from: startOfNow, to: startOfTimeStamp)
+        let day = components.day!
+        return abs(day) <= 90
+    }
     
 }
