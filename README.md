@@ -1,4 +1,4 @@
-# Cat Facts Sample Project
+# Cat Facts 🙀
 
 a fun iOS application that can display a list of facts about cats
 
