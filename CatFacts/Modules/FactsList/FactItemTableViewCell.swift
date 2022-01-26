@@ -14,7 +14,7 @@ class FactItemTableViewCell: UITableViewCell {
     private lazy var factLabel : UILabel = {
         let lbl = UILabel()
         lbl.numberOfLines = 0
-        lbl.textColor = .black
+        lbl.textColor = .label
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont.boldSystemFont(ofSize: 16)
         lbl.textAlignment = .left
