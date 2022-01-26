@@ -6,13 +6,30 @@
 	<dict>
 		<key>Alamofire.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 		<key>Pods-CatFacts.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>0F6C4793537904F34C671D378B34EC71</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EAAA1AD3A8A1B59AB91319EE40752C6D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
