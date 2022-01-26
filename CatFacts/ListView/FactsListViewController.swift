@@ -51,6 +51,7 @@ final class FactsListViewController: BaseMVPController<FactsListPresenter, FactL
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Fun Facts about...CATS!"
         configureSearchBar()
         configureTable()
         presenter?.attachView(self)
