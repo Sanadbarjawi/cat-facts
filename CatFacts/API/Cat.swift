@@ -19,7 +19,7 @@ struct CatFact: Decodable {
         text = try values.decode(String.self, forKey: .text)
         createdAt = try values.decode(Date.self, forKey: .createdAt)
         //assigning `isNew` property in the initializer for performance reasons and to avoid any later iterations that would be causing a time complexity of O(n)
-        status.isNew = DateHelper.isLessThan90Days(createdAt.timeIntervalSince1970)
+        status.isNew = DateHelper.isSpanIsLessThan90Days(timeInterval: createdAt.timeIntervalSince1970, currentDate: Date())
     }
     
     enum CodingKeys: String, CodingKey {

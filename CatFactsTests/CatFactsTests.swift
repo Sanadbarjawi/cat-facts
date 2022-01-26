@@ -8,26 +8,53 @@
 import XCTest
 @testable import CatFacts
 
-class CatFactsTests: XCTestCase {
+class CatFactsPresenterTests: XCTestCase {
+    
+    private var factsListPresenter: FactsListPresenter!
+    private var fetchCatFactsAPIExpectation: XCTestExpectation!
+    
+    func testFetchingFacts() {
+        let factsAPI = FactsApi()
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // Create an expectation for a task.
+        fetchCatFactsAPIExpectation = expectation(description: "Feching Cat Facts API")
+        factsListPresenter = FactsListPresenter(service: factsAPI)
+        factsListPresenter.attachView(self)
+        factsListPresenter.fetchCatFacts()
+        
+        wait(for: [fetchCatFactsAPIExpectation!], timeout: 10.0)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testSpanLessThan90() {
+        /**
+         18th of Jan 2022 == 1642464000
+         26th of Jan 2022 == 1643155200
+         will check the span between the two if less than 90 days, if it returns true then success else fails
+         **/
+        let span = DateHelper.isSpanIsLessThan90Days(timeInterval: 1642464000,
+                                    currentDate: Date(timeIntervalSince1970: 1643155200))
+        if span {
+            XCTAssert(span, "less than 90 days :)")
+        } else {
+            XCTAssert(span, "greater than 90 days :(")
         }
     }
+    
 
+}
+
+extension CatFactsPresenterTests: FactListViewable {
+    
+    func didSucceed() {
+        XCTAssertNotNil(factsListPresenter?.getCatFacts())
+        XCTAssertTrue(factsListPresenter?.getCatFacts().count ?? 0 > 0)
+        fetchCatFactsAPIExpectation?.fulfill()
+    }
+    
+    func didFail(with error: Error) {
+        XCTAssertNotNil(nil)
+        XCTAssertTrue(false)
+        fetchCatFactsAPIExpectation?.fulfill()
+    }
+    
 }
