@@ -17,6 +17,9 @@
 		88CFD42426136D3B0090B26A /* CatFactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFD42326136D3B0090B26A /* CatFactsUITests.swift */; };
 		88CFD43626136D610090B26A /* FactsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CFD43526136D610090B26A /* FactsApi.swift */; };
 		88E7FBCD26136F7600185018 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7FBCC26136F7600185018 /* Cat.swift */; };
+		C968332A27A160600070FE8F /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968332927A160600070FE8F /* Presentable.swift */; };
+		C968332C27A160FF0070FE8F /* BaseMVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968332B27A160FF0070FE8F /* BaseMVP.swift */; };
+		C968332F27A161310070FE8F /* Viewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968332E27A161310070FE8F /* Viewable.swift */; };
 		E43AD9115AFF4B8FD48140A6 /* Pods_CatFacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E4E467BA69CCD125797C98 /* Pods_CatFacts.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +59,9 @@
 		88CFD42526136D3B0090B26A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88CFD43526136D610090B26A /* FactsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsApi.swift; sourceTree = "<group>"; };
 		88E7FBCC26136F7600185018 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
+		C968332927A160600070FE8F /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
+		C968332B27A160FF0070FE8F /* BaseMVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMVP.swift; sourceTree = "<group>"; };
+		C968332E27A161310070FE8F /* Viewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewable.swift; sourceTree = "<group>"; };
 		E0E4E467BA69CCD125797C98 /* Pods_CatFacts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CatFacts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -119,9 +125,10 @@
 			isa = PBXGroup;
 			children = (
 				88CFD43426136D500090B26A /* API */,
+				C968332827A160470070FE8F /* BaseMVP */,
+				C968333027A164940070FE8F /* ListView */,
 				88CFD40126136D370090B26A /* AppDelegate.swift */,
 				88CFD40326136D370090B26A /* SceneDelegate.swift */,
-				88CFD40526136D370090B26A /* ViewController.swift */,
 				88CFD40726136D370090B26A /* Main.storyboard */,
 				88CFD40A26136D3A0090B26A /* Assets.xcassets */,
 				88CFD40C26136D3A0090B26A /* LaunchScreen.storyboard */,
@@ -155,6 +162,32 @@
 				88E7FBCC26136F7600185018 /* Cat.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		C968332827A160470070FE8F /* BaseMVP */ = {
+			isa = PBXGroup;
+			children = (
+				C968332B27A160FF0070FE8F /* BaseMVP.swift */,
+				C968332D27A1611D0070FE8F /* Protocols */,
+			);
+			path = BaseMVP;
+			sourceTree = "<group>";
+		};
+		C968332D27A1611D0070FE8F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C968332927A160600070FE8F /* Presentable.swift */,
+				C968332E27A161310070FE8F /* Viewable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		C968333027A164940070FE8F /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				88CFD40526136D370090B26A /* ViewController.swift */,
+			);
+			path = ListView;
 			sourceTree = "<group>";
 		};
 		ECBFCEB9B3B0E1B295F597A6 /* Pods */ = {
@@ -340,11 +373,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C968332F27A161310070FE8F /* Viewable.swift in Sources */,
+				C968332C27A160FF0070FE8F /* BaseMVP.swift in Sources */,
 				88CFD43626136D610090B26A /* FactsApi.swift in Sources */,
 				88CFD40626136D370090B26A /* ViewController.swift in Sources */,
 				88E7FBCD26136F7600185018 /* Cat.swift in Sources */,
 				88CFD40226136D370090B26A /* AppDelegate.swift in Sources */,
 				88CFD40426136D370090B26A /* SceneDelegate.swift in Sources */,
+				C968332A27A160600070FE8F /* Presentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
