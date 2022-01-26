@@ -57,10 +57,10 @@ class FactItemTableViewCell: UITableViewCell {
         containerStackView.translatesAutoresizingMaskIntoConstraints = false
         
         
-        containerStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
-        containerStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
-        containerStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        containerStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        containerStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12).isActive = true
+        containerStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12).isActive = true
+        containerStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
+        containerStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

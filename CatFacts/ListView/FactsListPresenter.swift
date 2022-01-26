@@ -7,7 +7,9 @@
 
 import Foundation
 
-protocol FactListViewable: Viewable {}
+protocol FactListViewable: Viewable {
+    func reloadData()
+}
 
 final class FactsListPresenter: Presentable {
     
@@ -15,7 +17,10 @@ final class FactsListPresenter: Presentable {
     weak var view: FactListViewable?
     
     private let service: FactsApi
-    private var catFactsList: [CatFact]?
+    private var catFactsList: [CatFact] = []
+    private var filteredList: [CatFact] = []
+
+    private var isSearching = false
     
     /// intisialising using the service, DI
     /// - Parameter FactsApi: service to call the API
@@ -33,6 +38,16 @@ final class FactsListPresenter: Presentable {
         self.view = nil
     }
     
+    func search(for text: String) {
+        if text.isEmpty {
+            isSearching = false
+        } else {
+            isSearching = true
+            filteredList = catFactsList.filter({$0.text.contains(text)})
+        }
+        view?.reloadData()
+    }
+    
     /// fetching cat facts from API
     @objc
     func fetchCatFacts() {
@@ -42,13 +57,13 @@ final class FactsListPresenter: Presentable {
                 self?.view?.didFail(with: error ?? NSError(domain: "Fetching Facts", code: -1, userInfo: ["message":"general error"]))
                 return
             }
-            self?.catFactsList = list
+            self?.catFactsList = list ?? []
             self?.view?.didSucceed()
         }
     }
     
     func getCatFacts() -> [CatFact] {
-        return catFactsList ?? []
+        return isSearching ? filteredList : catFactsList
     }
     
 }

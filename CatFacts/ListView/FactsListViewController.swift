@@ -9,13 +9,23 @@ import UIKit
 
 final class FactsListViewController: BaseMVPController<FactsListPresenter, FactListViewable> {
     
+    private lazy var searchBar: UISearchBar = {
+        let searchBar: UISearchBar = UISearchBar(frame: view.bounds)
+        searchBar.barStyle = .default
+        searchBar.searchTextField.addDoneButtonOnKeyboard()
+        searchBar.placeholder = "search ^.^"
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.delegate = self
+        return searchBar
+    }()
+    
     private lazy var factsTableView: UITableView = {
         let tableView: UITableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.register(FactItemTableViewCell.self,
                            forCellReuseIdentifier: FactItemTableViewCell.identifier)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
-        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
@@ -23,20 +33,34 @@ final class FactsListViewController: BaseMVPController<FactsListPresenter, FactL
         return FactsListPresenter(service: FactsApi())
     }
     
+    private func configureSearchBar() {
+        view.addSubview(searchBar)
+        
+        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        searchBar.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        searchBar.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+    }
+    
     private func configureTable() {
         view.addSubview(factsTableView)
         factsTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         factsTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        factsTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        factsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        factsTableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
+        factsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureSearchBar()
         configureTable()
-
         presenter?.attachView(self)
         presenter?.fetchCatFacts()
+    }
+}
+
+extension FactsListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter?.search(for: searchBar.text ?? "")
     }
 }
 
@@ -53,6 +77,9 @@ extension FactsListViewController: UITableViewDataSource {
 }
 
 extension FactsListViewController: FactListViewable {
+    func reloadData() {
+        factsTableView.reloadData()
+    }
     
     func stopLoading() {
         
